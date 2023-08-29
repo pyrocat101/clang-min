@@ -1,0 +1,21 @@
+name: release-amd64-linux
+
+on:
+  push:
+    tags:
+      - "v*.*.*"
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Build
+        run: WILDCARDS_FLAG=--wildcards NAME=clang+llvm-16.0.3-x86_64-linux-gnu-ubuntu-22.04 ./build.sh
+
+      - name: Release artifact
+        uses: softprops/action-gh-release@v1
+        with:
+          files: ./clang+llvm-16.0.3-x86_64-linux-gnu-ubuntu-22.04.tar.xz
