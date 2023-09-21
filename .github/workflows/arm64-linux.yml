@@ -13,9 +13,9 @@ jobs:
         uses: actions/checkout@v3
 
       - name: Build
-        run: NO_STRIP=1 WILDCARDS_FLAG=--wildcards NAME=clang+llvm-16.0.3-aarch64-linux-gnu ./build.sh
+        run: NO_STRIP=1 WILDCARDS_FLAG=--wildcards NAME=clang+llvm-15.0.6-aarch64-linux-gnu ./build.sh
 
       - name: Release artifact
         uses: softprops/action-gh-release@v1
         with:
-          files: ./clang+llvm-16.0.3-aarch64-linux-gnu.tar.xz
+          files: ./clang+llvm-15.0.6-aarch64-linux-gnu.tar.xz
